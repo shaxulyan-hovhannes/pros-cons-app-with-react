@@ -1,14 +1,18 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { DIVIDER_COLOR } from 'constants/colors';
 import Header from 'components/header/Header'
+import ListBlock from 'components/listBlock/ListBlock'
+import {DIVIDER_COLOR, PROS_LIST_BLOCK_HEADER_TITLE,
+    CONS_LIST_BLOCK_HEADER_TITLE, PROS_INITIAL_DATA, CONS_INITIAL_DATA} from 'constants/index'
 
 const useStyles = makeStyles({
     root: {
         width: '50%',
+        minWidth: 350,
         height: '85%',
         boxShadow: '-1px 0px 9px 3px rgba(119,119,119,0.4)',
         borderRadius: 5,
+        transition: 'box-shadow 0.3s',
         '&:hover': {
             boxShadow: '-1px 0px 9px 3px rgba(119,119,119,0.5)',
         },
@@ -16,15 +20,10 @@ const useStyles = makeStyles({
     headerContainer: {
         height: 100,
     },
-    prosConsContainer: {    
+    prosConsContainer: {  
+        width: '100%',  
         height: 'calc(100% - 100px)',  
-        transition: 'box-shadow 0.3s',
-        display: 'flex',      
-       alignSelf: 'stretch'
-    },
-    item: {
-        flex: 1,
-        height: '100%',
+        display: 'flex',   
     },
     divider: {
         width: 2,
@@ -38,12 +37,12 @@ function ProsCons() {
     return (
     <div className={classes.root}>
         <div className={classes.headerContainer}>
-            <Header />
+            <Header titleText="Should I eat at McDonalds?" />
         </div>
         <div className={classes.prosConsContainer}>
-        <div className={classes.item}></div>
+        <ListBlock headerTitle={ PROS_LIST_BLOCK_HEADER_TITLE } initialData={PROS_INITIAL_DATA} />
         <div className={classes.divider}></div>
-        <div className={classes.item}></div>
+       <ListBlock headerTitle={ CONS_LIST_BLOCK_HEADER_TITLE } initialData={CONS_INITIAL_DATA} />
         </div>
     </div>
     )
