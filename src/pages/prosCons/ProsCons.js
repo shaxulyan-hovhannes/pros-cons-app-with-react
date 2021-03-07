@@ -36,11 +36,10 @@ const useStyles = makeStyles({
 })
 
 function ProsCons() {
+
     const classes = useStyles();
 
     const isNotificatonOpen = useSelector(selectNotificationOpen);
-
-    console.log('IS OPEN', isNotificatonOpen)
     
     return (
     <div className={classes.root}>

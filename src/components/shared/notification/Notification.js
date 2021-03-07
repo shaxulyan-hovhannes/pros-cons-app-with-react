@@ -27,7 +27,6 @@ function SnackBar({
         <Snackbar transitionDuration={{enter: 500, exit: 2000}} {...restProps}>
             <Alert
             style={{width: 350}}
-            onClose={() => {}}
             severity={alertSeverity}
             elevation={alertElevation}
             variant={alertVariant}

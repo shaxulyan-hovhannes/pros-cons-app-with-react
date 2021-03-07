@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import BootstrapTextField from 'components/shared/bootstrapTextField/BootstrapTextField';
 import { DIVIDER_COLOR } from 'constants/index';
 import prosConsActions from 'redux/prosCons/actions';
-import { selectDuplicatedItemIndex } from 'redux/prosCons/selectors';
+import { selectDuplicatedItemIndex, selectDuplicatedContent } from 'redux/prosCons/selectors';
 
 const useStyles = makeStyles({
     listItem: {
@@ -17,7 +17,8 @@ const useStyles = makeStyles({
         letterSpacing: 1,
         cursor: 'move',
         border: props => props.isDragging ? `3px dashed ${DIVIDER_COLOR} ` :
-        props.duplicatedItemIndex === props.index ? '3px dashed green' : 'none'
+        (props.duplicatedItemIndex === props.index && props.duplicatedContent === props.itemContent) ?
+        '3px dashed green' : 'none'
     },
     numericItem: {
         fontWeight: 'bold',
@@ -49,6 +50,7 @@ function ListItem({
     const dndRef = useRef(null);
 
     const duplicatedItemIndex = useSelector(selectDuplicatedItemIndex);
+    const duplicatedContent = useSelector(selectDuplicatedContent)
 
     const [{isDragging}, drag] = useDrag(() => ({
         item: { type: itemType, content: listItem.content, index },
@@ -59,7 +61,8 @@ function ListItem({
         },
       }));
 
-      const classes = useStyles({isDragging, duplicatedItemIndex, index});
+      const classes = useStyles({isDragging, duplicatedItemIndex, index,
+        duplicatedContent, itemContent: listItem.content});
 
       const [, drop] = useDrop({
         accept: itemType,
@@ -72,6 +75,8 @@ function ListItem({
             if (!dndRef.current) {
                 return;
             }
+
+            if (duplicatedItemIndex !== -1) return
 
             const dragIndex = item.index;
             const hoverIndex = index;
@@ -118,10 +123,13 @@ function ListItem({
           });     
         }
         
-        const foundDuplicatedItemIndex = listData.findIndex(item => item.content.toLowerCase() === value.toLowerCase())
+        const foundDuplicatedItemIndex = listData.findIndex(item => item.content.toLowerCase() === value.toLowerCase());
         
         dispatch(prosConsActions.toggleNotificationOpen(foundDuplicatedItemIndex !== -1));
-        dispatch(prosConsActions.setDuplicatedItemIndex(!~foundDuplicatedItemIndex ? null : foundDuplicatedItemIndex));
+        dispatch(prosConsActions.setDuplicatedData({
+          index: foundDuplicatedItemIndex,
+          content: value,
+        }));
   
         setListData(oldListItems => {
           return [
