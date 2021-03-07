@@ -40,9 +40,9 @@ function ProsCons() {
             <Header titleText="Should I eat at McDonalds?" />
         </div>
         <div className={classes.prosConsContainer}>
-        <ListBlock headerTitle={ PROS_LIST_BLOCK_HEADER_TITLE } initialData={PROS_INITIAL_DATA} />
+        <ListBlock headerTitle={ PROS_LIST_BLOCK_HEADER_TITLE } initialData={PROS_INITIAL_DATA} itemType="pros" />
         <div className={classes.divider}></div>
-       <ListBlock headerTitle={ CONS_LIST_BLOCK_HEADER_TITLE } initialData={CONS_INITIAL_DATA} />
+       <ListBlock headerTitle={ CONS_LIST_BLOCK_HEADER_TITLE } initialData={CONS_INITIAL_DATA} itemType="cons" />
         </div>
     </div>
     )
