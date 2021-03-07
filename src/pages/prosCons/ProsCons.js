@@ -1,10 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
 import Header from 'components/header/Header'
 import ListBlock from 'components/listBlock/ListBlock'
 import {DIVIDER_COLOR, PROS_LIST_BLOCK_HEADER_TITLE,
     CONS_LIST_BLOCK_HEADER_TITLE, PROS_INITIAL_DATA,
-    CONS_INITIAL_DATA, ITEM_TYPES} from 'constants/index'
+    CONS_INITIAL_DATA, ITEM_TYPES, NOTIFICATION_DATA} from 'constants/index';
+import Notification from 'components/shared/notification/Notification';
+import { selectNotificationOpen } from 'redux/prosCons/selectors';    
 
 const useStyles = makeStyles({
     root: {
@@ -33,7 +36,11 @@ const useStyles = makeStyles({
 })
 
 function ProsCons() {
-    const classes = useStyles()
+    const classes = useStyles();
+
+    const isNotificatonOpen = useSelector(selectNotificationOpen);
+
+    console.log('IS OPEN', isNotificatonOpen)
     
     return (
     <div className={classes.root}>
@@ -47,6 +54,14 @@ function ProsCons() {
        <ListBlock headerTitle={ CONS_LIST_BLOCK_HEADER_TITLE } initialData={CONS_INITIAL_DATA}
        itemType={ITEM_TYPES.cons} />
         </div>
+        <Notification
+         open={isNotificatonOpen}
+         anchorOrigin={NOTIFICATION_DATA.anchorOrigin}
+         alertMessage={NOTIFICATION_DATA.message}
+         alertSeverity={NOTIFICATION_DATA.severity}
+         alertElevation={NOTIFICATION_DATA.elevation}
+         alertVariant={NOTIFICATION_DATA.variant}
+        />
     </div>
     )
 }

@@ -35,12 +35,21 @@ const CONS_INITIAL_DATA = [
 const ITEM_TYPES = {
     pros: 'pros',
     cons: 'cons',
-}
+};
+
+const NOTIFICATION_DATA = {
+    anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+    message: 'Duplicated input item',
+    severity: 'warning',
+    elevation: 10,
+    variant: 'outlined'
+} 
 
 export {
     PROS_LIST_BLOCK_HEADER_TITLE,
     CONS_LIST_BLOCK_HEADER_TITLE,
     PROS_INITIAL_DATA,
     CONS_INITIAL_DATA,
-    ITEM_TYPES
+    ITEM_TYPES,
+    NOTIFICATION_DATA
 };
