@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from  'prop-types'
+import { DndProvider } from 'react-dnd';
 import { makeStyles } from '@material-ui/styles';
-import {DIVIDER_COLOR} from 'constants/colors'
-import DataList from 'components/shared/dataList/DataList'
-
+import {DIVIDER_COLOR } from 'constants/index';
+import DataList from 'components/shared/dataList/DataList';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const useStyles = makeStyles({
     root: {
@@ -28,23 +29,26 @@ const useStyles = makeStyles({
     }
 })
 
-function ListBlock({headerTitle = '', initialData = []}) {
-    const classes = useStyles()
+function ListBlock({headerTitle = '', initialData = [], itemType = ''}) {
+    const classes = useStyles();
 
     return (
-        <div className={classes.root}>
+       <DndProvider backend={ HTML5Backend }>
+            <div className={classes.root}>
             <div className={classes.listHeader}>{headerTitle}</div>
             <div className={classes.divider}></div>
             <div className={classes.listContainer}>
-                <DataList initialData={initialData} />
+                <DataList initialData={initialData} itemType={itemType} />
             </div>
         </div>
+       </DndProvider>
     )
 }
 
 ListBlock.propTypes = {
     headerTitle: PropTypes.string,
-    initialData: PropTypes.array
+    initialData: PropTypes.array,
+    itemType: PropTypes.string
 }
 
 export default ListBlock

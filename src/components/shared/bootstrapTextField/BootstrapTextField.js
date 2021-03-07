@@ -4,19 +4,20 @@ import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles({
     root: {
+      width: '100%',
       marginLeft: 5,
-        fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
-        height: 30,
-        fontSize: 22,
-        borderRadius: 4,
-        backgroundColor: "#fcfcfb",
-        transition: 'box-shadow 0.3s, border-color 0.3s',
-        letterSpacing: 1,
-        "&:hover": {
+      fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
+      height: 30,
+      fontSize: 22,
+      borderRadius: 4,
+      backgroundColor: "#fcfcfb",
+      transition: 'box-shadow 0.3s, border-color 0.3s',
+      letterSpacing: 1,
+      "&:hover": {
         backgroundColor: "#fff"
-    },
-    "&$focused": {
-      marginLeft: 5,
+      },
+      "&$focused": {
+        marginLeft: 5,
         fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
         height: 30,
         fontSize: 22,

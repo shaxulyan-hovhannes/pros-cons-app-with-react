@@ -1,5 +1,7 @@
 const PROS_LIST_BLOCK_HEADER_TITLE = 'PROS';
+
 const CONS_LIST_BLOCK_HEADER_TITLE = 'CONS';
+
 const PROS_INITIAL_DATA = [
     {
         content: 'It\'s really tasty 1'
@@ -20,6 +22,7 @@ const PROS_INITIAL_DATA = [
         content: 'Making a new entry'
     }
 ];
+
 const CONS_INITIAL_DATA = [
     {
         content: 'Makes me fat'
@@ -29,9 +32,15 @@ const CONS_INITIAL_DATA = [
     }
 ];
 
+const ITEM_TYPES = {
+    pros: 'pros',
+    cons: 'cons',
+}
+
 export {
     PROS_LIST_BLOCK_HEADER_TITLE,
     CONS_LIST_BLOCK_HEADER_TITLE,
     PROS_INITIAL_DATA,
-    CONS_INITIAL_DATA
-}
+    CONS_INITIAL_DATA,
+    ITEM_TYPES
+};
