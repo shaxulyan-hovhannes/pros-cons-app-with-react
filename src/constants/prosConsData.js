@@ -32,12 +32,15 @@ const CONS_INITIAL_DATA = [
     }
 ];
 
-const LIST_ITEM_TYPE = 'LIST_ITEM';
+const ITEM_TYPES = {
+    pros: 'pros',
+    cons: 'cons',
+}
 
 export {
     PROS_LIST_BLOCK_HEADER_TITLE,
     CONS_LIST_BLOCK_HEADER_TITLE,
     PROS_INITIAL_DATA,
     CONS_INITIAL_DATA,
-    LIST_ITEM_TYPE
-}
+    ITEM_TYPES
+};
